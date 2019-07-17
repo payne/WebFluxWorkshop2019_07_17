@@ -42,8 +42,8 @@ class ProfileService {
 
     public Mono<Profile> create(String email) {
         return this.repository
-                .save(new Profile(null, email));
-                //.doOnSuccess(entity -> this.publisher.publishEvent(new ProfileCreatedEvent(entity)));
+                .save(new Profile(null, email))
+                .doOnSuccess(entity -> this.publisher.publishEvent(new ProfileCreatedEvent(entity)));
     }
 }
 

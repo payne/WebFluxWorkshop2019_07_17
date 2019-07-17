@@ -1,0 +1,19 @@
+oidc:
+  issuer-uri: https://{yourOktaDomain}/oauth2/default
+  client-id: {yourClientId}
+  client-secret: {yourClientSecret}
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          okta:
+            issuer-uri: ${oidc.issuer-uri}
+        registration:
+          okta:
+            client-id: ${oidc.client-id}
+            client-secret: ${oidc.client-secret}
+      resourceserver:
+        jwt:
+          issuer-uri: ${oidc.issuer-uri}

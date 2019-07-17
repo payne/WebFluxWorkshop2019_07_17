@@ -37,6 +37,7 @@ class ProfileHandler {
     }
 
     Mono<ServerResponse> create(ServerRequest request) {
+    	System.out.println("Processing create!");
         Flux<Profile> flux = request
                 .bodyToFlux(Profile.class)
                 .flatMap(toWrite -> this.profileService.create(toWrite.getEmail()));
